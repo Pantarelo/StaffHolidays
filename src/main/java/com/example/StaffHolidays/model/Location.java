@@ -16,6 +16,9 @@ public class Location {
     @JsonIgnore
     private List<Holiday> holidays;
 
+    @OneToMany(mappedBy = "location", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<TouristAttractions> attractions;
+
     public Location() {
 
     }
@@ -46,5 +49,13 @@ public class Location {
 
     public void setHolidays(List<Holiday> holidays) {
         this.holidays = holidays;
+    }
+
+    public List<TouristAttractions> getAttractions() {
+        return attractions;
+    }
+
+    public void setAttractions(List<TouristAttractions> attractions) {
+        this.attractions = attractions;
     }
 }
