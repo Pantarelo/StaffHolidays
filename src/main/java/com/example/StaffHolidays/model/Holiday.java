@@ -17,15 +17,19 @@ public class Holiday {
     @ManyToOne
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
+    @ManyToOne
+    @JoinColumn(name = "id_location", nullable = false)
+    private Location location;
 
     public Holiday() {
 
     }
 
-    public Holiday(LocalDate startTime, LocalDate endTime, Employee employee) {
+    public Holiday(LocalDate startTime, LocalDate endTime, Employee employee, Location location) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.employee = employee;
+        this.location = location;
     }
 
     public Long getId() {
@@ -58,5 +62,13 @@ public class Holiday {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }
