@@ -16,10 +16,6 @@ public class EmployeeService {
         return employeeRepository.findAll();
     }
 
-    public Employee getEmployeeByName(String name) {
-        return employeeRepository.findEmployeeByName(name);
-    }
-
     public Employee saveEmployee(Employee employee) {
         return employeeRepository.save(employee);
     }
@@ -27,4 +23,6 @@ public class EmployeeService {
     public void deleteEmployee(Long id) {
         employeeRepository.deleteById(id);
     }
+
+    public Employee getByName(String name) { return employeeRepository.getByName(name);}
 }
