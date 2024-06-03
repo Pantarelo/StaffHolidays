@@ -1,6 +1,7 @@
 package com.example.StaffHolidays.controller;
 
 import com.example.StaffHolidays.model.Location;
+import com.example.StaffHolidays.model.TouristAttractions;
 import com.example.StaffHolidays.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,11 @@ public class LocationController {
     @PostMapping
     public Location createLocation(@RequestBody Location location) {
         return locationService.saveLocation(location);
+    }
+
+    @GetMapping("/attractions/{name}")
+    public List<TouristAttractions> getAttractions(@PathVariable String name) {
+        return locationService.getTouristAttractions(name);
     }
 
     @DeleteMapping("/{name}")

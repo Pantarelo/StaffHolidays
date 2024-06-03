@@ -1,6 +1,7 @@
 package com.example.StaffHolidays.service;
 
 import com.example.StaffHolidays.model.Location;
+import com.example.StaffHolidays.model.TouristAttractions;
 import com.example.StaffHolidays.repository.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,11 @@ public class LocationService {
 
     public Location saveLocation(Location location) {
         return locationRepository.save(location);
+    }
+
+    public List<TouristAttractions> getTouristAttractions(String name) {
+        Location location = getLocationByName(name);
+        return location.getAttractions();
     }
 
     public boolean deleteLocation(String name) {
