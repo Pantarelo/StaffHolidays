@@ -3,6 +3,7 @@ package com.example.StaffHolidays.controller;
 import com.example.StaffHolidays.model.Holiday;
 import com.example.StaffHolidays.service.HolidayService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,6 +27,11 @@ public class HolidayController {
     @PostMapping
     public Holiday createHoliday(@RequestBody Holiday holiday) {
         return holidayService.saveHoliday(holiday);
+    }
+
+    @PutMapping
+    public void updateHoliday(@RequestBody Holiday holiday) {
+        holidayService.updateHoliday(holiday);
     }
 
     @DeleteMapping("/{id}")

@@ -2,6 +2,7 @@ package com.example.StaffHolidays.controller;
 
 import com.example.StaffHolidays.model.TouristAttractions;
 import com.example.StaffHolidays.service.TouristAttractionsService;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,4 +33,9 @@ public class TouristAttractionsController {
     public void deleteAttraction(@PathVariable Long id) {
         touristAttractionsService.deleteAttraction(id);
     }
+
+//    @GetMapping("/trip/{id}")
+//    public List<TouristAttractions> getTrip(@PathVariable Long id) {
+//        return touristAttractionsService.getTrip(id);
+//    }
 }
