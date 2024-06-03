@@ -27,4 +27,16 @@ public class HolidayService {
     public void deleteHoliday(Long id) {
         holidayRepository.deleteById(id);
     }
+
+    public void updateHoliday(Holiday holiday) {
+
+        Holiday holiday1 = holidayRepository.findById(holiday.getId()).orElse(null);
+
+        if(holiday1 != null) {
+            holiday1.setLocation(holiday.getLocation());
+            holiday1.setEndTime(holiday.getEndTime());
+            holiday1.setStartTime(holiday.getStartTime());
+            holidayRepository.save(holiday1);
+        }
+    }
 }

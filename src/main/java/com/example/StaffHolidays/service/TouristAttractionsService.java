@@ -27,4 +27,5 @@ public class TouristAttractionsService {
     public void deleteAttraction(Long id) {
         touristAttractionsRepository.deleteById(id);
     }
+
 }
