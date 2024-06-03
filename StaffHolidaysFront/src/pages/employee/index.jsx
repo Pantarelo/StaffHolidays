@@ -3,6 +3,7 @@ import API from "../../scripts/api";
 import { useEffect, useState } from "react";
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
+import { FaEye } from "react-icons/fa";
 import Popup from 'reactjs-popup';
 
 export default function Employee(params) {
@@ -158,12 +159,15 @@ export default function Employee(params) {
                 {
                     listOfHolidays && listOfHolidays.map((holiday) => 
                         <>
-                            <a href={`/holiday/${holiday.id}`} key={holiday.id} className="w-full bg-zinc-800 px-10 py-2 rounded-xl m-2 grid grid-cols-3 gap-4">
+                            <a  key={holiday.id} className="w-full bg-zinc-800 px-10 py-2 rounded-xl m-2 grid grid-cols-3 gap-4">
                                 <span className="flex items-center justify-center">{new Date(holiday.startTime).toDateString()} - {new Date(holiday.endTime).toDateString()}</span>
                                 <span className="flex items-center justify-center">{holiday.location ? holiday.location.name : "-"}</span>
                                 <div className="w-36 flex justify-end items-center">
-                                    <button className="m-2"><MdEdit/></button>
-                                    <button onClick={()=> deleteHoliday(holiday.id)}><MdDelete/></button>
+                                    <Popup trigger={ <button><MdEdit/></button>} modal nested>
+                                        <div>Edit</div>
+                                    </Popup>
+                                    <button className="m-2" onClick={()=> deleteHoliday(holiday.id)}><MdDelete/></button>
+                                    <a href={`/holiday/${holiday.id}`}><button><FaEye/></button></a>
                                 </div>
                             </a>
                         </>
